@@ -24,7 +24,6 @@
     html.push('        <option value="off">禁用</option>');
     html.push('    </select></td>');
     html.push('<td>');
-    html.push('    <button class="add">添加</button>');
     html.push('    <button class="remove">删除</button>');
     html.push('</td>');
     html.push('</tr>');
@@ -63,7 +62,7 @@
       localStorage.setItem('oaakeys', JSON.stringify(datas));
     });
    
-    $('#keys').on('click', '.add', function () {
+    $('.add').on('click', function () {
       me.renderRow();
     });
     $('#keys').on('click', '.remove', function () {

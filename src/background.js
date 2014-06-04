@@ -27,5 +27,7 @@ var checkMatch = function (url) {
 };
 
 chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
-  sendResponse(checkMatch(request.url));
+  var matchs = checkMatch(request.url);
+  //matchs.length && chrome.browserAction.setIcon({ path: 'img/icon-url.png' });
+  sendResponse(matchs);
 });
