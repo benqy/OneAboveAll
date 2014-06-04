@@ -2,16 +2,14 @@
 
 var validate = {
   regex: function (validateContent, targetUrl) {
-    console.log('1');
+    var reg = new RegExp(validateContent, 'ig');
+    return reg.test(targetUrl);
   },
   indexof: function (validateContent, targetUrl) {
-    if(~targetUrl.indexOf(validateContent)){
-      return true;
-    }
-    return false;
+    return !!~targetUrl.indexOf(validateContent)
   },
   full: function (validateContent, targetUrl) {
-    console.log('3');
+    return validateContent == targetUrl;
   }
 }
 

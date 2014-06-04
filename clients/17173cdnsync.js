@@ -40,6 +40,7 @@
     get: function () {
       var datas = localStorage.getItem('oaa-files');
       datas = datas ? JSON.parse(datas) : [];
+      datas = $.unique(datas);
       return datas;
     },
     remove:function(){
