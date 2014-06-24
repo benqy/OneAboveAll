@@ -1,0 +1,1 @@
+﻿$('#j_worldcup_info_banner,.game_tab clearfix,.game_content,#tbmall_score_region,#aside_ad,.game_frs_in_head,#fifa_card_frs-aside,.fifa_card_foottips,.lot_wrap,#game_rank').remove();

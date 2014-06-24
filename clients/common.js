@@ -1,0 +1,1 @@
+﻿$('img').css('visibility','hidden');
