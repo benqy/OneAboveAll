@@ -56,12 +56,12 @@
         $(row).find('.cell').each(function (i, cell) {
           data[$(cell).attr('data-key')] = $(cell).val()
         });
-        
-        me.validate(data) &&  datas.push(data);
+
+        me.validate(data) && datas.push(data);
       });
       localStorage.setItem('oaakeys', JSON.stringify(datas));
     });
-   
+
     $('.add').on('click', function () {
       me.renderRow();
     });
@@ -72,3 +72,55 @@
 };
 
 pop.init();
+
+var uploadFile = {
+  init: function (fn) {
+    $('#fileName').val(this.guid() + '.js');
+    this.bindAction(fn);
+  },
+  bindAction: function (fn) {
+    //'http://oneaboveall.qiniudn.com/qi6eakya1r1kyej90o3dudpap2.js'
+    $('#fileName').val(this.guid() + '.js');
+    var Qiniu_UploadUrl = "http://up.qiniu.com";
+    $("#upload").click(function () {
+      //普通上传
+      var Qiniu_upload = function (f, token, key) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', Qiniu_UploadUrl, true);
+        var formData, startDate;
+        formData = new FormData();
+        if (key !== null && key !== undefined) formData.append('key', key);
+        formData.append('token', token);
+        formData.append('file', f);
+        var taking;
+
+        xhr.onreadystatechange = function (response) {
+          if (xhr.readyState == 4 && xhr.status == 200 && xhr.responseText != "") {
+            var blkRet = JSON.parse(xhr.responseText);
+            fn(blkRet);
+          } else if (xhr.status != 200 && xhr.responseText) {
+
+          }
+        };
+        startDate = new Date().getTime();
+        xhr.send(formData);
+      };
+      var token = $("#token").val();
+      if ($("#file")[0].files.length > 0 && token != "") {
+        Qiniu_upload($("#file")[0].files[0], token, $("#fileName").val());
+      } else {
+        $('#log').text('未选择文件');
+      }
+    })
+  },
+  guid: function () {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  }
+};
+
+uploadFile.init(function (blkRet) {
+  var file = 'http://oneaboveall.qiniudn.com/' + blkRet.key;
+  $('#log').text('上传成功:' + file);
+  $('#keys tbody tr:last td:eq(2) input').val(file).css('border-color','red');
+  pop.renderRow();
+});

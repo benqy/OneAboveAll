@@ -6,12 +6,17 @@
     <script src="jquery-2.1.1.min.js"></script>
     <style>
         html, body {
-            
+        }
+
+        .content {
+            width: 900px;
+            margin: 40px 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ccc;
         }
 
         table {
-
-            width: 900px;
+            width: 100%;
         }
 
             table td, table th {
@@ -25,42 +30,34 @@
     </style>
 </head>
 <body>
-    <table id="keys">
-        <thead>
-            <tr>
-                <th>匹配类型</th>
-                <th>匹配文本</th>
-                <th>脚本地址</th>
-                <th>启用</th>
-                <th>操作</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!--<tr class="row">
-    <td>
-        <select class="cell" data-key="type" name="" id="">
-            <option value="regex">正则</option>
-            <option value="full">完全匹配</option>
-            <option value="indexof">部分匹配</option>
-        </select>
-    </td>
-    <td><input class="cell"  data-key="content" type="text" value="http://ued.local.17173.com/sync/showsvn"></td>
-    <td><input class="cell"  data-key="script" type="text" name="" id="" value="http://one.above.all/17173cdnsync.js"></td>
-    <td><select name=""  data-key="status" class="cell" id="">
-        <option value="on">启用</option>
-        <option value="off">禁用</option>
-    </select></td>
-    <td>
-    <button class="add">添加</button>
-    <button class="remove">删除</button>
-</td>
-</tr>-->
-
-
-        </tbody>
-    </table>
-    <div>
-        <button class="add">添加</button><button id="save">保存</button>
+    <div class="content">
+        <table id="keys">
+            <thead>
+                <tr>
+                    <th>匹配类型</th>
+                    <th>匹配文本</th>
+                    <th>脚本地址</th>
+                    <th>启用</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div>
+            <button class="add">添加</button>
+            <button id="save">保存</button>
+        </div>
+    </div>
+    <div class="content">
+        <h3>上传脚本文件</h3>
+        <form method="post" id="jsFileForm" action="http://up.qiniu.com" enctype="multipart/form-data">
+            <input id="token" name="token" type="hidden" class="ipt" value="rrGYBTgg782dxQDxccsDpc9Q33FB26iA33zj9D-x:_xnsoMJk02LASUjjyvJc5a7iYwQ=:eyJzY29wZSI6Im9uZWFib3ZlYWxsIiwiZGVhZGxpbmUiOjE0MDM1OTg0NjF9">
+            <input name="key" type="hidden" id="fileName" class="ipt" value="">
+            <input name="file" class="ipt" id="file" type="file" accept=".js" />
+        </form>
+        <input type="submit" id="upload" value="上传">
+        <span id="log" style="color:red;"></span>
     </div>
     <script src="options.js"></script>
 </body>
