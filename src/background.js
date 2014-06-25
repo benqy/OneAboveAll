@@ -27,7 +27,12 @@ var checkMatch = function (url) {
 };
 
 chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
-  var matchs = checkMatch(request.url);
-  //matchs.length && chrome.browserAction.setIcon({ path: 'img/icon-url.png' });
-  sendResponse(matchs);
+  if (request.url) {
+    var matchs = checkMatch(request.url);
+    //matchs.length && chrome.browserAction.setIcon({ path: 'img/icon-url.png' });
+    sendResponse(matchs);
+  }
+  else if (request.code) {
+    chrome.tabs.executeScript(null, { code: request.code });
+  }
 });
