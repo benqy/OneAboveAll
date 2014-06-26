@@ -75,16 +75,22 @@ pop.init();
 
 var uploadFile = {
   init: function (fn) {
-    $('#fileName').val(this.guid() + '.js');
+    $('#fileName').val(this.guid());
     this.bindAction(fn);
   },
   bindAction: function (fn) {
     //'http://oneaboveall.qiniudn.com/qi6eakya1r1kyej90o3dudpap2.js'
-    $('#fileName').val(this.guid() + '.js');
+    $('#fileName').val(this.guid());
     var Qiniu_UploadUrl = "http://up.qiniu.com";
     $("#upload").click(function () {
       //普通上传
       var Qiniu_upload = function (f, token, key) {
+        if (~f.name.indexOf('css')) {
+          key += key + '.css';
+        }
+        else {
+          key += key + '.js';
+        }
         var xhr = new XMLHttpRequest();
         xhr.open('POST', Qiniu_UploadUrl, true);
         var formData, startDate;

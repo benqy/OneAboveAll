@@ -11,7 +11,7 @@ var validate = {
   full: function (validateContent, targetUrl) {
     return validateContent == targetUrl;
   }
-}
+};
 
 var checkMatch = function (url) {
   var oaakeys = localStorage.getItem('oaakeys'), matchs = [];
