@@ -79,7 +79,6 @@ var uploadFile = {
     this.bindAction(fn);
   },
   bindAction: function (fn) {
-    //'http://oneaboveall.qiniudn.com/qi6eakya1r1kyej90o3dudpap2.js'
     $('#fileName').val(this.guid());
     var Qiniu_UploadUrl = "http://up.qiniu.com";
     $("#upload").click(function () {
