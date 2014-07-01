@@ -1,7 +1,7 @@
 OneAboveAll
 ===========
   
-这是个CHROME插件
+这是个CHROME插件 :[https://chrome.google.com/webstore/detail/one-above-all/bmclddiflcfmbjpmmnpgnnmadgomkklg?hl=zh-CN](https://chrome.google.com/webstore/detail/one-above-all/bmclddiflcfmbjpmmnpgnnmadgomkklg?hl=zh-CN "charome商店内链接")
 
 
 设置匹配规则,自动加载指定脚本(样式)到页面中执行.
