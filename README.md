@@ -51,11 +51,13 @@ OneAboveAll
 
 	![](http://oneaboveall.qiniudn.com/qbbdtr2niof7pk8s9x17vwy7gb.png)
 
-3. http://oneaboveall.qiniudn.com/markdown.js 在页面上任意输入框按ctrl+v,则会把剪贴板里的图片上传到服务器,并将图片地址填入输入框.如果是在https://stackedit-beta.herokuapp.com/这个markdown编辑器里粘帖,则会自动生成markdown格式的图片引用.
+3. http://oneaboveall.qiniudn.com/markdown.js 在页面上任意输入框按ctrl+v,则会把剪贴板里的图片上传到服务器,并将图片地址填入输入框.如果是在https://stackedit-beta.herokuapp.com/ 这个markdown编辑器里粘帖,则会自动生成markdown格式的图片引用.
    
 ![](http://oneaboveall.qiniudn.com/p67krqaxg5ijm9cr4rbxbbxwas.png)
 ![](http://oneaboveall.qiniudn.com/09rd9hqkbt3ayj69jfhphpu95d.png)
 
+上面3个自定义脚本,在选项卡里的配置如下:
+![](http://oneaboveall.qiniudn.com/m1u9y60kg5w2kp54qotmk8mh1t.png)
 
 ###自定义脚本开发详解
 待续
