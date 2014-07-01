@@ -956,11 +956,41 @@
 
 
 (function () {
-  //快捷键隐藏,显示图片
+  //切换图片显示隐藏
   var imgIsHidden = false;
-  Mousetrap.bind('s', function () {
+  Mousetrap.bind(['s','shift+s'], function () {
     var el = $('img,embed,object,iframe');
     (imgIsHidden = !imgIsHidden) ? el.css('visibility', 'hidden') : el.css('visibility', 'visible');
+  });
+
+  //滚动到页面顶部
+  Mousetrap.bind(['b','shift+b'], function () {
+    $("html, body").animate({scrollTop: 0}, 100);
+  });
+
+
+  //google翻译
+  var panel, timer;
+  Mousetrap.bind(['t','shift+t'], function () {
+    var text = window.getSelection();
+    if (!text) return;
+    var tLink = 'http://translate.google.com/translate_a/single?client=t&sl=en&tl=zh-CN&hl=zh-CN&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&dt=at&dt=sw&ie=UTF-8&oe=UTF-8&oc=2&otf=1&ssel=0&tsel=0&pc=1&q=';
+    var q = encodeURIComponent(text);
+    $.ajax({
+      url: tLink + q,
+      dataType:'text',
+      success: function (data) {
+        clearTimeout(timer);
+        var result = data.split(']')[0].replace(/\[|\"/g, '').split(',')[0];
+        panel = panel || $('<div style="position:fixed;width:300px;height:200px;bottom:0;right:0;padding: 10px;font-size: 14px;border:1px solid #828282; background-color:#fff899"></div>');
+        panel.html('<p>' + text + ':</p><p>' + result + '</p>');
+        panel.show();
+        $(document.body).append(panel);
+        timer = setTimeout(function () {
+          panel.hide();
+        }, 5000);
+      }
+    });
   });
 
 

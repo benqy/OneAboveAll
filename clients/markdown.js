@@ -3,8 +3,10 @@
   var guid = function () {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
   }
-
-  window.prompt = function () {};
+  setTimeout(function () {
+    console.log(3);
+    $('.editor-content').off('paste');
+  }, 3000);
   document.body.onpaste = pasteHandle;
   function pasteHandle(ev) {
     var clipboardData, items, item;
